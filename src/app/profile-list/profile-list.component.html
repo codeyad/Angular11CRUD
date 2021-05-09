@@ -1,0 +1,85 @@
+
+<mat-card class="list-card">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+        <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+            
+            <!-- Position Column -->
+            <ng-container matColumnDef="personId">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef> First Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+            </ng-container>
+            
+            <!-- Weight Column -->
+            <ng-container matColumnDef="lastName">
+                <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="gender">
+                <th mat-header-cell *matHeaderCellDef> Gender </th>
+                <td mat-cell *matCellDef="let element"> {{element.gender | gender}} </td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="birthDate">
+                <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.birthDate | date: 'd, MMM, y'}} </td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="country">
+                <th mat-header-cell *matHeaderCellDef> Country </th>
+                <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="street">
+                <th mat-header-cell *matHeaderCellDef> Street </th>
+                <td mat-cell *matCellDef="let element"> {{element.street}} </td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="apartment">
+                <th mat-header-cell *matHeaderCellDef> Apartment No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.apartment}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>   
+                <td mat-cell *matCellDef="let element"> 
+                    <button 
+                        mat-icon-button 
+                        color="accent" 
+                        aria-label="Example icon button with a vertical three dot icon"
+                        (click)="openEditDialog(element)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button 
+                        mat-icon-button color="warn" 
+                        aria-label="Example icon button with a vertical three dot icon"
+                        (click)="openDeleteDialog(element)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="dataSource.length"></mat-paginator>
+    </mat-card>
+    
+    
+    
+    
+    
+    

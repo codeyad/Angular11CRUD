@@ -37,7 +37,7 @@ export class ProfileFormComponent implements OnInit {
       this.profile.setValue({
         firstName: this.profileToEdit.firstName,
         lastName: this.profileToEdit.lastName,
-        birthDate: moment(this.profileToEdit.birthDate, 'DD-MM-YYYY'),
+        birthDate: this.profileToEdit.birthDate,
         gender: this.profileToEdit.gender,
         country: this.profileToEdit.country,
         street: this.profileToEdit.street,

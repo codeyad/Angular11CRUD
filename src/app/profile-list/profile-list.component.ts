@@ -49,14 +49,16 @@ export class ProfileListComponent implements OnInit {
       disableClose: true 
     });
     
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
+    dialogRef.afterClosed().subscribe(
+      (result) => {
         this.profileService.delete(profile.id).subscribe(result => {
-          console.log(result);
+          this.openSnackBar('Profile has been deleted successfully!');
           this.getProfiles();
         })
-      }
-    });
+      }, 
+      (error) => {
+        this.openSnackBar('Error calling backend!');
+      });
   }
   
   openEditDialog(profile: PersonProfile) {
@@ -65,17 +67,16 @@ export class ProfileListComponent implements OnInit {
       disableClose: true 
     });
     
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
+    dialogRef.afterClosed().subscribe(
+      (result) => {
         this.profileService.patch(result, profile.id).subscribe(
         (result) => {
-          console.log(result);
+          this.openSnackBar('Profile has been edited successfully!');
           this.getProfiles();
         },
         (error) => {
-          console.log(error)
+          this.openSnackBar('Error calling backend!');
         })
-      }
     });
   }
 

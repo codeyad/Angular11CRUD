@@ -47,8 +47,8 @@ export class ProfileFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.clearFields();
     this.resultEvent.emit(this.profile);
+    this.clearFields();
   }
 
   cancelUpdate(){
